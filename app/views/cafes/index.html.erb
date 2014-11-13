@@ -1,0 +1,11 @@
+<article>
+  <% @cafes.each do |cafe| %>
+  <section class="cafe">
+      <h1><%= cafe.name %></h1>
+  <p><%= simple_format cafe.address  %></p>
+  <p>Rating: <%= cafe.rating  %></p>
+    <p>Coordinates: [<%= cafe.latitude %>, <%= cafe.longitude %>]</p>
+<%# link_to "Edit cafe", edit_cafe_path(cafe) %>
+</section>
+<% end %>
+</article>
