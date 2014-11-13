@@ -18,11 +18,27 @@ class CafesController < ApplicationController
       render :new
     end
   end
-end
+
   def edit
     @cafe = Cafe.find(params[:id])
+  end
+  def update
+    @cafe = Cafe.find(params[:id])
+    if @cafe.update(cafe_params)
+      flash[:success] = "Thanks for updating the cafe"
+      redirect_to root_path
+    else
+      flash[:error] = "Oops, error"
+      render :new
+    end
+  end
+  def destroy
+    @cafe = Cafe.find(params[:id])
+    @cafe.destroy
+    redirect_to root_path
   end
 private
   def cafe_params
     params.require(:cafe).permit(:name,:address,:rating)
   end
+end

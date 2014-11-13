@@ -1,11 +1,18 @@
 <article>
+   <ul>
   <% @cafes.each do |cafe| %>
   <section class="cafe">
-      <h1><%= cafe.name %></h1>
-  <p><%= simple_format cafe.address  %></p>
-  <p>Rating: <%= cafe.rating  %></p>
-    <p>Coordinates: [<%= cafe.latitude %>, <%= cafe.longitude %>]</p>
-<%# link_to "Edit cafe", edit_cafe_path(cafe) %>
+
+      <li data-latitude="<%= cafe.latitude %>" data-longitude="<%= cafe.longitude %>" >
+          <h1><%= cafe.name %></h1>
+          <p><%= simple_format cafe.address  %></p>
+          <p>Rating: <%= cafe.rating  %></p>
+          <p>Coordinates: [<%= cafe.latitude %>, <%= cafe.longitude %>]</p>
+          <%= link_to "Edit cafe", edit_cafe_path(cafe) %>
+          <%= link_to "Remove cafe", cafe_path(cafe), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %>
+        </li>
 </section>
 <% end %>
+</ul>
+<section id="map"></section>
 </article>

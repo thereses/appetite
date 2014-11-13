@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :cafes, only: [:create, :new, :index, :edit]
+  resources :cafes, only: [:create, :new, :index, :edit, :destroy, :update]
   root "cafes#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
